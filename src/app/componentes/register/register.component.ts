@@ -11,14 +11,14 @@ export class RegisterComponent implements OnInit {
   public email: string;
   public password: string;
   constructor(
-      public authSevice: AuthService,
+      public authService: AuthService,
       public router: Router
   ) { }
 
   ngOnInit() {
   }
   onSubmitAddUser(){
-    this.authSevice.registerUser(this.email, this.password)
+    this.authService.registerUser(this.email, this.password)
     .then( (res) =>{
       this.router.navigate(['/logged']);
       console.log("Registro Exitoso");
