@@ -33,4 +33,21 @@ export class LoginComponent implements OnInit {
       console.log(err);
     });
   }
+  onClickGoogle(){
+    this.authService.loginGoogle()
+    .then( (res) =>{
+      this.flashMensaje.show('Bienvenido',
+      {cssClass: 'alert-success', timeout:4000});
+      this.router.navigate(['/logged']);
+      console.log("ingreso Exitoso");
+
+    }).catch((err)=>{
+      this.flashMensaje.show(err.message,
+      {cssClass: 'alert-danger', timeout:4000});
+      console.log(err);
+    });
+  }
+
+
+
 }
