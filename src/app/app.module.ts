@@ -11,12 +11,17 @@ import { LoginComponent } from './componentes/login/login.component';
 import { LoggedComponent } from './componentes/logged/logged.component';
 import { ErrorPageComponent } from './componentes/error-page/error-page.component';
 
-import { AngularFireModule} from 'angularfire2'
-import { AngularFireAuthModule} from 'angularfire2/auth'
+import { FlashMessagesModule} from 'angular2-flash-messages';
+import { FlashMessagesService} from 'angular2-flash-messages';
 
-import { environment} from '../environments/environment'
-import { AuthService} from './servicios/auth.service'
+import { AngularFireModule} from 'angularfire2';
+import { AngularFireAuthModule} from 'angularfire2/auth';
 
+import { environment} from '../environments/environment';
+
+import { AuthService} from './servicios/auth.service';
+
+import { AuthGuard} from './guards/auth.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,11 +36,12 @@ import { AuthService} from './servicios/auth.service'
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    FlashMessagesModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
 
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard, FlashMessagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
