@@ -1,9 +1,19 @@
-<div class="jumbotron">
-  <h1 class="display-3">logeed</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-  </p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 mx-auto my-5" *ngFor="let card of cards">
+    <div class="card mb-3">
+    <img style="height: 200px; width: 100%; display: block;" [src]="card.img" alt="Card image">
+    <h3 >  {{card.articulo}}</h3>
+    <div class="card-body">
+      <h5 class="card-title">{{card.precio}}</h5>
+      <h6 class="card-subtitle text-muted">{{card.disponible}}</h6>
+    </div>
+
+    <div class="card-body">
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+
+    </div>
+  </div>
 </div>
