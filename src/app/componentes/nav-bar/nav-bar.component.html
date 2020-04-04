@@ -15,7 +15,7 @@
     <ul class="navbar-nav mx-auto">
 
       <li class="nav-item" *ngIf="!isAdmin">
-        <a class="nav-link" href="#" routerLink="/articulo">articulo</a>
+        <a class="nav-link" href="#" routerLink="/productos">articulo</a>
       </li>
       <li class="nav-item" *ngIf="!isLogin">
         <a class="nav-link" href="#" routerLink="/login">Login</a>
@@ -28,6 +28,9 @@
       </li>
       <li>
         <a class="nav-link" *ngIf="isLogin">{{nombreUsuario}}</a>
+      </li>
+      <li>
+        <a class="nav-link" *ngIf="isLogin">{{fotoUsuario}}</a>
       </li>
       <li>
         <img src="{{fotoUsuario}}" class="rounded-circle" *ngIf="isLogin">

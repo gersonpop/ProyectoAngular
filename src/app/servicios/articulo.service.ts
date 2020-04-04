@@ -20,7 +20,7 @@ export class ArticuloService {
       descripcion: articulo.descripcion,
       precio: articulo.precio,
       disponible: articulo.disponible,
-      imagen: articulo.img
+      imagen: articulo.imagen
     });
    }
    updateArticulo(articulo: Producto){
@@ -29,7 +29,7 @@ export class ArticuloService {
       descripcion: articulo.descripcion,
       precio: articulo.precio,
       disponible: articulo.disponible,
-      imagen: articulo.img
+      img: articulo.imagen
      });
    }
    deleteArticulo(skey: string){

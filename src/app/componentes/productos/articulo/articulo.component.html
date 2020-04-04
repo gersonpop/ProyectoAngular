@@ -1,0 +1,86 @@
+<div class="container" >
+  <div class="row">
+
+    <div class="col-sm">
+        <img src="{{articuloService.selectActiculo.imagen}}" class="fruta" alt="">
+
+    </div>
+    <div class="col-sm">
+
+    <form  #articuloForm="ngForm" (ngSubmit)="onSubmit(articuloForm)">
+      <input type="hidden"
+        name="skey"
+        #skey="ngModel"
+        [(ngModel)]="articuloService.selectActiculo.skey">
+
+
+        <div class="form-grpup mt_2">
+          <input type="text"
+                class="form-control"
+                name="nombre"
+                #nombre="ngModel"
+                [(ngModel)]="articuloService.selectActiculo.nombre"
+                placeholder="nombre del articulo">
+        </div>
+        <div class="form-grpup">
+          <input type="text"
+                class="form-control"
+                name="descripcion"
+                #descripcion="ngModel"
+                [(ngModel)]="articuloService.selectActiculo.descripcion"
+                placeholder="Breve descripcion del articulo">
+        </div>
+        <div class="form-grpup">
+          <input type="text"
+                class="form-control"
+                name="imagen"
+                #imagen="ngModel"
+                [(ngModel)]="articuloService.selectActiculo.imagen"
+                placeholder="ruta de la imagen del articulo"
+                [value]="urlImage | async"
+                >
+        </div>
+        <div class="form-grpup">
+          <input type="text"
+                class="form-control"
+                name="precio"
+                #precio="ngModel"
+                [(ngModel)]="articuloService.selectActiculo.precio"
+                placeholder="precio del articulo">
+        </div>
+        <div class="form-grpup">
+          <input type="text"
+                class="form-control"
+                name="disponible"
+                #disponible="ngModel"
+                [(ngModel)]="articuloService.selectActiculo.disponible"
+                placeholder="cantidad disponible en stock">
+        </div>
+        <hr>
+        <div class="form-group">
+          <h5>Seleccionar Imagen</h5>
+
+          <input type="file" class="bnt btn-secondary" placeholder="buscar imagen" accept=".png, .jpg" (change)="onUpload($event)">
+        </div>
+        <div class="progress">
+          <div class="progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadPercent | async ) + '%'">
+
+          </div>
+
+        </div>
+        <br>
+        <input type="hidden" #imagenArticulo [value]="urlImage | async">
+        <div class="form-group mt-2" >
+          <button class="btn btn-primary" type="submit" (click)="onSubmit(articuloForm);resetForm(articuloForm)">
+            <i class="fa fa-save"> </i> guardar
+          </button>
+          <button class="btn btn-dark" type="reset" (click)="resetForm(articuloForm)">
+            <i class="fa fa-eraser"></i>Borrar
+          </button>
+        </div>
+
+    </form>
+  </div>
+
+  </div>
+</div>

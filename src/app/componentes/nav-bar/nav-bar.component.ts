@@ -19,6 +19,7 @@ export class NavBarComponent implements OnInit {
   ){}
 
   ngOnInit() {
+    this.isAdmin=false;
     this.authService.getAuth().subscribe( auth =>{
       if(auth){
         this.isLogin = true;
@@ -28,6 +29,7 @@ export class NavBarComponent implements OnInit {
         }
         this.emailUsuario = auth.email;
         this.fotoUsuario = auth.photoURL;
+        console.log(this.nombreUsuario +"la fotico es" + this.fotoUsuario)
 
       }
     })

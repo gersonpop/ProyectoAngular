@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -12,14 +15,16 @@ import { LoginComponent } from './componentes/login/login.component';
 import { LoggedComponent } from './componentes/logged/logged.component';
 import { ErrorPageComponent } from './componentes/error-page/error-page.component';
 import { ProductosComponent } from './componentes/productos/productos.component';
-import { ArticuloComponent} from './componentes/articulo/articulo.component';
 import { ListaComponent} from './componentes/productos/lista/lista.component';
+import { ArticuloComponent} from './componentes/productos/articulo/articulo.component';
+
 
 import { FlashMessagesModule} from 'angular2-flash-messages';
 import { FlashMessagesService} from 'angular2-flash-messages';
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireAuthModule} from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireStorageModule } from "@angular/fire/storage";
 import { environment} from '../environments/environment';
 import { AuthService} from './servicios/auth.service';
 import { AuthGuard} from './guards/auth.guard';
@@ -36,8 +41,10 @@ import { ArticuloService } from "./servicios/articulo.service";
     LoggedComponent,
     ErrorPageComponent,
     ProductosComponent,
+    ProductosComponent,
+    ListaComponent,
     ArticuloComponent,
-    ListaComponent
+
   ],
   imports: [
     BrowserModule,
@@ -46,7 +53,12 @@ import { ArticuloService } from "./servicios/articulo.service";
     FlashMessagesModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    CommonModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
+    AngularFireStorageModule
+
 
   ],
   providers: [AuthService, AuthGuard, FlashMessagesService, ArticuloService],

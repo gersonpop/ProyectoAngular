@@ -1,1 +1,24 @@
-<p>lista works!</p>
+<div class="card">
+  <div class="card-body">
+    <h6 class="text-center"></h6>
+
+      <table class="table table-sm table-hover">
+        <tbody>
+          <tr *ngFor="let producto of productList">
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.descripcion}}</td>
+            <td>{{producto.precio}}</td>
+            <td>{{producto.disponible}}</td>
+
+            <a class="btn btn-white text-blue" (click)="onEdit(producto)">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a class="btn btn-white text-red" (click)="onDelete(producto.skey)">
+              <i class="fa fa-trash"></i>
+            </a>
+          </tr>
+        </tbody>
+      </table>
+
+  </div>
+</div>

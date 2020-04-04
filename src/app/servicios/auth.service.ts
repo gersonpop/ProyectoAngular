@@ -29,7 +29,7 @@ loginTwitter(){
   );
 }
 
-  registerUser(email: string, pass: string){
+  registerUser( email: string, pass: string){
     return new Promise((resolve, reject)=>{
       this.afAuth.auth.createUserWithEmailAndPassword(email, pass)
       .then(userData => resolve(userData),
@@ -51,5 +51,8 @@ loginTwitter(){
 
   logout(){
     return this.afAuth.auth.signOut();
+  }
+  isAuth(){
+    return this.afAuth.authState.map( auth => auth);
   }
 }

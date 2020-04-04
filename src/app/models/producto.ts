@@ -4,5 +4,5 @@ export class Producto {
   descripcion: String;
   precio: number;
   disponible: number;
-  img: String;
+  imagen: String;
 }
