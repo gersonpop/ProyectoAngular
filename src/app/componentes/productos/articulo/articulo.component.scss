@@ -1,4 +1,25 @@
 img.fruta{
-  width: 500px;
-  height: auto;
+width: 100%;
+height: auto;
+}
+@supports(object-fit: cover){
+  img.fruta{
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+
+
+/* Notificacion */
+snack-bar-container.success{
+  background-color: green($color: #5cb85c);
+  color: white;
+}
+
+snack-bar-container.notification simple-snack-bar{
+  font-size: 18px [important];
+  font-weight: bold;
+
 }

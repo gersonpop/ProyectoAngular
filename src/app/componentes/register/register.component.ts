@@ -5,6 +5,7 @@ import { FlashMessagesService} from 'angular2-flash-messages'
 import { AngularFireStorage } from "@angular/fire/storage";
 import {  finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -16,14 +17,16 @@ export class RegisterComponent implements OnInit {
     public authService: AuthService,
     public router: Router,
     public flashMensaje: FlashMessagesService,
-    public storage: AngularFireStorage
+    public storage: AngularFireStorage,
+    public http: HttpClient
 ) { }
    @ViewChild('imageUser' ) inputimageUser: ElementRef;
   public displayName: string;
+  public imageUser: string="no se cargo";
   public profile: string;
+
   public email: string;
   public password: string;
-  //public imagen: string = "Seleccione Imagen";
 
   uploadPercent: Observable<number>;
   urlImage: Observable<string>;
@@ -33,18 +36,26 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
-  onUpload(e){
 
-    console.log("subir",e.target.files[0].name);
+  onUpload(e){
     const id= Math.random().toString(32).substring(2);   //genera id unico
     const file = e.target.files[0];
-    const filePath = `profileImagen/profile_${id}`;
+    const filePath = `profileImagen/${id}_${e.target.files[0].name}`;
     const ref= this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
     this.uploadPercent = task.percentageChanges();
-    task.snapshotChanges().pipe(finalize(() => this.urlImage = ref.getDownloadURL())).subscribe();// tomar url de imagen
-  }
+    task.snapshotChanges().pipe(finalize(() => this.urlImage = ref.getDownloadURL())).subscribe();
+
+    }
+
+
+
   onSubmitAddUser(){
+
+    this.imageUser=this.inputimageUser.nativeElement.value;
+
+
+
     this.authService.registerUser(this.email, this.password)
     .then( (res) =>{
 
@@ -52,7 +63,7 @@ export class RegisterComponent implements OnInit {
         if(user){
           user.updateProfile({
             displayName: this.displayName,
-            photoURL: this.inputimageUser.nativeElement.value
+            photoURL: this.imageUser
           }).then(()=>{
             this.router.navigate(['/logged']);
           }).catch((error)=>console.log("error", error)
@@ -63,6 +74,6 @@ export class RegisterComponent implements OnInit {
       this.flashMensaje.show(err.message,
       {cssClass: 'alert-danger', timeout:4000});
       console.log(err);
-    });
+    });//*/
   }
 }
