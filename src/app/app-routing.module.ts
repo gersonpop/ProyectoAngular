@@ -9,13 +9,14 @@ import {ArticuloComponent}from './componentes/productos/articulo/articulo.compon
 import { ProductosComponent } from "./componentes/productos/productos.component";
 import {ErrorPageComponent}from './componentes/error-page/error-page.component'
 import { AuthGuard} from './guards/auth.guard';
+import { ShoppingcarComponent } from './componentes/home-page/shoppingcar/shoppingcar.component';
 
 
 const routes: Routes = [
   {path:'',component: HomePageComponent},
   {path:'login', component: LoginComponent},
   {path:'articulo', component: ArticuloComponent},
-
+  {path:'shoppingcar', component: ShoppingcarComponent},
   {path:'productos', component: ProductosComponent},
   {path:'register', component: RegisterComponent},
   {path:'logged', component: LoggedComponent, canActivate: [AuthGuard]},

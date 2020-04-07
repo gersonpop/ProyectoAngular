@@ -1,37 +1,35 @@
 
-<div class="container" style="position: sticky;top: 60px;background-color: white;  z-index: 3;">
+<div class="container" style="background-color: whitesmoke;border-radius: 10px;">
+<div class="container" style="position: sticky;top: 77px;background-color: white;  z-index: 3;border-radius: 10px;">
+  <br>
   <div class="search-div">
 
-    <input mat-input type="text" class="form-cotrol" name="filtrarArticulos" placeholder="buscar.." [(ngModel)]="filtrarArticulos" style="width: 100%;">
+    <input mat-input type="text" class="form-cotrol" name="filtrarArticulos" placeholder="¿qué deseas buscar?" [(ngModel)]="filtrarArticulos" style="width: 100%;">
   </div>
-
+<br>
 </div>
 
-<mat-grid-list cols="3"  rowHeight="1:1.55" style="z-index: 0;">
+<mat-grid-list cols="3"  rowHeight="1:1.20" style="z-index: 0;">
   <mat-grid-tile *ngFor="let producto of productList| filter:filtrarArticulos"    >
     <mat-card class="example-card" style="width: 90%;">
       <mat-card-header>
-        <img mat-card-avatar class="example-header-image"  [src]="producto.imagen">
+        <img mat-card-avatar class="example-header-image"  [src]="producto.imagen" >
         <mat-card-title> {{producto.nombre}}</mat-card-title>
       </mat-card-header>
+
       <img mat-card-image [src]="producto.imagen" style="height:200px;" >
-      <mat-card-content style="height:30px;" >
-        <p>
-        {{producto.descripcion}}
-        </p>
-      </mat-card-content>
       <mat-card-subtitle>
         Precio: <h1>${{producto.precio}}</h1>
       </mat-card-subtitle>
+
       <mat-card-actions>
         <button  mat-raised-button color="primary" (click)="onCompra(producto)" ><mat-icon>add_shopping_cart</mat-icon> agregar</button>
-
       </mat-card-actions>
     </mat-card>
 
   </mat-grid-tile>
 </mat-grid-list>
-
+</div>
 <!--[style.background]="tile.color"
    <mat-form-field class="search-form-field ml-2" style="width: 83%;">
     <input  [(ngModel)]="searchKey" placeholder="buscar..." autocomplet="off"

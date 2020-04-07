@@ -13,7 +13,13 @@ export class ArticuloService {
   constructor(private firebase: AngularFireDatabase, private http: HttpClient) {
 
    }
-
+   updateDisponible(articulo: Producto){
+    console.log(articulo);
+     this.productList.update(articulo.skey, {
+      nombre: articulo.nombre,
+      disponible: articulo.disponible
+     });
+   }
 
 
    getArticulo(){
@@ -31,8 +37,6 @@ export class ArticuloService {
    }
    updateArticulo(articulo: Producto){
     console.log(articulo);
-
-
      this.productList.update(articulo.skey, {
       nombre: articulo.nombre,
       descripcion: articulo.descripcion,

@@ -13,7 +13,7 @@ import { ArticuloService } from 'src/app/servicios/articulo.service';
 export class CompraComponent implements OnInit {
   pedido:number=1;
   name:string;
-  res:Respuesta
+  res:string[];
   public subtotal:number=0;
   constructor(private articuloService: ArticuloService,
     private dialogReg: MatDialogRef<CompraComponent>,
@@ -41,10 +41,15 @@ export class CompraComponent implements OnInit {
     this.pedido = this.articuloService.selectActiculo.disponible
   }
   comprar(){
+
     this.articuloService.selectActiculo.pedido= this.pedido
-    this.carshop.addItem(this.articuloService.selectActiculo);
-   // console.log(this.res)
+    this.res=this.carshop.addItem(this.articuloService.selectActiculo);
+
+
+    if(this.res[2]!="")
+    this.pedido=Number(this.res[2])
+    if(this.res[0]=="OK")
     this.dialogReg.close();
-    this.notif.success("Se actualizo el articulo exitosamente", "OK");
+    this.notif.success(this.res[1], "OK");
   }
 }

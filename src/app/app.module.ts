@@ -36,6 +36,7 @@ import { ArticuloService } from "./servicios/articulo.service";
 import { FilterPipe } from './pipes/filter.pipe';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CompraComponent } from './componentes/home-page/compra/compra.component';
+import { ShoppingcarComponent } from './componentes/home-page/shoppingcar/shoppingcar.component';
 
 
 
@@ -54,7 +55,8 @@ import { CompraComponent } from './componentes/home-page/compra/compra.component
     ListaComponent,
     ArticuloComponent,
     FilterPipe,
-    CompraComponent
+    CompraComponent,
+    ShoppingcarComponent
 
   ],
   imports: [
