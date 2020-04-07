@@ -20,6 +20,11 @@
           </div>
           <hr>
           <div class="form-group">
+            <label for="text">URL Imagen:</label>
+            <input type="text" name="urImgUpload" id="urImgUpload" [(ngModel)]="urImgUpload" class="form-control">
+          </div>
+          <hr>
+          <div class="form-group">
             <h5>Seleccionar Imagen</h5>
 
             <input type="file" class="bnt btn-secondary" placeholder="buscar imagen" accept=".png, .jpg" (change)="onUpload($event)">
@@ -31,7 +36,7 @@
 
           </div>
           <br>
-          <input type="hidden" #imageUser [value]="urlImage | async">
+          <input name="imageUser" type="text" #imageUser [value]="urlImage | async"  >
           <div class="form-group">
             <input *ngIf="urlImage | async ; else btnDissabled" type="submit" value="Registrar" class="btn btn-primary btn-block btn-st mx-auto">
 

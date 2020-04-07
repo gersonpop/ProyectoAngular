@@ -1,12 +1,85 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-3 mx-auto my-5" *ngFor="let card of cards">
+
+<div class="container" style="background-color: whitesmoke;border-radius: 10px;">
+<div class="container" style="position: sticky;top: 77px;background-color: white;  z-index: 3;border-radius: 10px;">
+  <br>
+  <div class="search-div">
+
+    <input mat-input type="text" class="form-cotrol" name="filtrarArticulos" placeholder="¿qué deseas buscar?" [(ngModel)]="filtrarArticulos" style="width: 100%;">
+  </div>
+<br>
+</div>
+
+<mat-grid-list cols="3"  rowHeight="1:1.20" style="z-index: 0;">
+  <mat-grid-tile *ngFor="let producto of productList| filter:filtrarArticulos"    >
+    <mat-card class="example-card" style="width: 90%;">
+      <mat-card-header>
+        <img mat-card-avatar class="example-header-image"  [src]="producto.imagen" >
+        <mat-card-title> {{producto.nombre}}</mat-card-title>
+      </mat-card-header>
+
+      <img mat-card-image [src]="producto.imagen" style="height:200px;" >
+      <mat-card-subtitle>
+        Precio: <h1>${{producto.precio}}</h1>
+      </mat-card-subtitle>
+
+      <mat-card-actions>
+        <button  mat-raised-button color="primary" (click)="onCompra(producto)" ><mat-icon>add_shopping_cart</mat-icon> agregar</button>
+      </mat-card-actions>
+    </mat-card>
+
+  </mat-grid-tile>
+</mat-grid-list>
+</div>
+<!--[style.background]="tile.color"
+   <mat-form-field class="search-form-field ml-2" style="width: 83%;">
+    <input  [(ngModel)]="searchKey" placeholder="buscar..." autocomplet="off"
+    type="text" class="form-cotrol" name="searchKey" value=""
+    >
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="searchKey=''"><mat-icon>close</mat-icon></button>
+  </mat-form-field>
+
+  <div class="col-md-3 mx-auto my-5" *ngFor="let producto of productList | filter:filtrarArticulos ">
+    <mat-grid-list cols="3">
+      <mat-grid-tile>
+       <mat-card class="example-card">
+        <mat-card-header>
+          <img mat-card-avatar class="example-header-image"  [src]="producto.imagen">
+          <mat-card-title> {{producto.nombre}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="producto.imagen" >
+        <mat-card-content>
+          <p>
+          {{producto.descripcion}}
+          </p>
+        </mat-card-content>
+        <mat-card-subtitle>
+          Precio: <h1>${{producto.precio}}</h1>
+        </mat-card-subtitle>
+        <mat-card-actions>
+          <button  mat-raised-button color="primary"><mat-icon>add_shopping_cart</mat-icon> Comprar</button>
+
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<!------- <div class="row mt.2">
+     <div class="col"><h1>catalogo de productos</h1></div>
+
+     <div class="col form-group">
+      <input type="text" class="form-cotrol" name="filtrarArticulos" placeholder="buscar.." [(ngModel)]="filtrarArticulos">
+    </div>
+    </div>
+
+      <div class="row">
+    <div class="col-md-3 mx-auto my-5" *ngFor="let producto of productList | filter:filtrarArticulos ">
     <div class="card mb-3">
-    <img style="height: 200px; width: 100%; display: block;" [src]="card.img" alt="Card image">
-    <h3 >  {{card.articulo}}</h3>
+    <img style="height: 200px; width: 100%; display: block;" [src]="producto.imagen" alt="Card image">
+    <h3 >  {{producto.nombre}}</h3>
     <div class="card-body">
-      <h5 class="card-title">{{card.precio}}</h5>
-      <h6 class="card-subtitle text-muted">{{card.disponible}}</h6>
+      <h5 class="card-title">{{producto.precio}}</h5>
+      <h6 class="card-subtitle text-muted">{{producto.disponible}}</h6>
     </div>
 
     <div class="card-body">
@@ -15,5 +88,4 @@
     </div>
 
     </div>
-  </div>
-</div>
+  </div> --->

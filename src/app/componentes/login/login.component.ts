@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     .then( (res) =>{
       this.flashMensaje.show('Bienvenido',
       {cssClass: 'alert-success', timeout:4000});
-      this.router.navigate(['/logged']);
+      this.router.navigate(['']);
       console.log("ingreso Exitoso");
 
     }).catch((err)=>{

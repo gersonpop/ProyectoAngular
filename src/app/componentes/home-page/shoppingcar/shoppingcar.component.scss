@@ -1,0 +1,33 @@
+img.rounded-circle{
+  width: 60px;
+  height: 60px;
+}
+
+
+.table-fixed thead,
+.table-fixed tfoot{
+  width: 100%;
+}
+
+.table-fixed tbody {
+  height: 230px;
+  overflow-y: auto;
+  width: 50%;
+}
+
+//.table-fixed thead,
+.table-fixed tbody,
+//.table-fixed tfoot,
+.table-fixed tr,
+//.table-fixed td,
+.table-fixed th {
+  display: inline-block;
+}
+
+.table-fixed tbody td,
+//.table-fixed thead > tr> th,
+//.table-fixed tfoot > tr> td
+{
+  float: left;
+  border-bottom-width: 0;
+}//*/

@@ -1,0 +1,93 @@
+
+<div class="container"style="position: sticky;top:77px;z-index: 1;background-color: white;" >
+  <mat-toolbar >
+    <span class="fill-ramaining-space"></span>
+      <span>Finalizar Compra</span>
+    <span class="fill-ramaining-space"></span><br>
+  </mat-toolbar>
+    <mat-grid-list cols="3"rowHeight="6:1;" rowspan="2">
+      <mat-grid-tile></mat-grid-tile>
+      <mat-grid-tile ><h5>Su Compra está por un total de :</h5> <h4>{{total|currency}}</h4></mat-grid-tile>
+      <mat-grid-tile><button  mat-raised-button color="primary" (click)="comprar()"><mat-icon>payment</mat-icon>Comprar</button>
+      <p>. . </p><button  mat-raised-button color="red" (click)="cancelar()"><mat-icon>remove_shopping_cart</mat-icon> Cancelar</button></mat-grid-tile>
+    </mat-grid-list>
+
+  <br>
+  <div class="container" style="background-color: white;">
+  <table style="width: 100%;" >
+    <tr>
+     <th class="col-xs-2" style="width: 15%;"></th>
+     <th class="col-xs-2" style="width: 25%;">Producto</th>
+     <th class="col-xs-2" style="width: 15%;">Precio</th>
+     <th class="col-xs-2" style="width: 15%;">cantidad</th>
+     <th class="col-xs-2" style="width: 15%;">Subtoal</th>
+     <th class="col-xs-2" style="width: 15%;">Borrar</th>
+   </tr>
+   </table>
+  </div>
+  <br>
+</div>
+<mat-grid-list cols="1"  rowHeight="70px" style="z-index: 0;" style="height: 100px;overflow: scroll;">
+<mat-grid-tile>
+</mat-grid-tile>
+  <mat-grid-tile *ngFor="let producto of car"    >
+    <mat-card class="example-card" style="width: 100%;">
+      <table style="width: 100%;" >
+        <tr>
+         <th class="col-xs-2" style="width: 15%;"><img mat-card-avatar class="example-header-image"  [src]="producto.imagen"></th>
+         <th class="col-xs-2" style="width: 25%;">{{producto.nombre}}</th>
+         <th class="col-xs-2" style="width: 15%;">{{producto.precio | currency}}</th>
+         <th class="col-xs-2" style="width: 15%;">{{producto.pedido}}</th>
+         <th class="col-xs-2" style="width: 15%;">{{producto.pedido* producto.precio | currency}}</th>
+         <th class="col-xs-2" style="width: 15%;">
+          <a class="btn btn-white text-red" (click)="onDelete(element.skey)">
+            <i class="fa fa-trash"></i>
+          </a>
+        </th>
+        </tr>
+      </table>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+<!---<h6 class="text-center"></h6>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <table class="table table-fixed table-hover">
+            <thead>
+              <tr>
+                <th class="col-xs-2" style="width: 15%;"></th>
+                <th class="col-xs-2" style="width: 25%;">Producto</th>
+                <th class="col-xs-2" style="width: 15%;">Precio</th>
+                <th class="col-xs-2" style="width: 15%;">cantidad</th>
+                <th class="col-xs-2" style="width: 15%;">Subtoal</th>
+                <th class="col-xs-2" style="width: 15%;">Borrar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let producto of car ">
+                <td class="col-xs-2" style="width: 15%;"><img class="rounded-circle" [src]="producto.imagen"></td>
+                <td class="col-xs-2" style="width: 25%;">{{producto.nombre}}</td>
+                <td class="col-xs-2" style="width: 15%;">{{producto.precio}}</td>
+                <td class="col-xs-2" style="width: 15%;">{{producto.pedido}}</td>
+                <td class="col-xs-2" style="width: 15%;">{{producto.pedido* producto.precio}}</td>
+                <td class="col-xs-2" style="width: 15%;">
+                  <a class="btn btn-white text-red" (click)="onDelete(elemento.skey)">
+                  <i class="fa fa-trash"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td class="col-xs-2">Total 1</td>
+                <td class="col-xs-2">Total 2</td>
+                <td class="col-xs-2">Total 3</td>
+                <td class="col-xs-2">Total 4</td>
+                <td class="col-xs-2">Total 5</td>
+                <td class="col-xs-2">Total 6</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    -->

@@ -1,0 +1,159 @@
+<div class="container" >
+  <div class="row">
+
+    <div class="col-sm">
+        <img src="{{articuloService.selectActiculo.imagen}}" class="fruta" alt="">
+
+    </div>
+    <div class="col-sm">
+
+    <form  #articuloForm="ngForm" (ngSubmit)="onSubmit(articuloForm)">
+      <input type="hidden"
+        name="skey"
+        #skey="ngModel"
+        [(ngModel)]="articuloService.selectActiculo.skey">
+
+
+        <div class="form-grpup mt_2">
+          <input type="text"
+                class="form-control"
+                name="nombre"
+                #nombre="ngModel"
+                [(ngModel)]="articuloService.selectActiculo.nombre"
+                placeholder="nombre del articulo">
+        </div>
+        <div class="form-grpup">
+          <input type="text"
+                class="form-control"
+                name="descripcion"
+                #descripcion="ngModel"
+                [(ngModel)]="articuloService.selectActiculo.descripcion"
+                placeholder="Breve descripcion del articulo">
+        </div>
+        <div class="form-grpup">
+          <input type="text"
+                class="form-control"
+                name="imagen"
+                #imagen="ngModel"
+                [(ngModel)]="articuloService.selectActiculo.imagen"
+                placeholder="ruta de la imagen del articulo"
+
+                >
+        </div>
+        <div class="form-grpup">
+          <input type="text"
+                class="form-control"
+                name="precio"
+                #precio="ngModel"
+                [(ngModel)]="articuloService.selectActiculo.precio"
+                placeholder="precio del articulo">
+        </div>
+        <div class="form-grpup">
+          <input type="text"
+                class="form-control"
+                name="disponible"
+                #disponible="ngModel"
+                [(ngModel)]="articuloService.selectActiculo.disponible"
+                placeholder="cantidad disponible en stock">
+        </div>
+        <hr>
+        <div class="form-group">
+          <h5>Seleccionar Imagen</h5>
+
+          <input type="file" class="bnt btn-secondary" placeholder="buscar imagen" accept=".png, .jpg" (change)="onUpload($event)">
+        </div>
+        <div class="progress">
+          <div class="progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadPercent | async ) + '%'">
+
+          </div>
+
+        </div>
+        <br>
+        <input type="hidden" #imagenArticulo [value]="urlImage | async">
+        <div class="form-group mt-2" >
+          <button class="btn btn-primary" type="submit" (click)="onSubmit(articuloForm);resetForm(articuloForm)">
+            <i class="fa fa-save"> </i> guardar
+          </button>
+          <button class="btn btn-dark" type="reset" (click)="resetForm(articuloForm)">
+            <i class="fa fa-eraser"></i>Borrar
+          </button>
+        </div>
+
+    </form>
+  </div>
+
+  </div>
+</div>
+
+----------------------------------------nuevo
+
+<mat-grid-list cols="2" rowHeigth="200px">
+  <mat-grid-tile>
+    <img src="{{articuloService.selectActiculo.imagen}}" class="fruta" alt="">
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="controler-container">
+      <form #articuloForm="ngForm" (ngSubmit)="onSubmit(articuloForm)">
+        <input type="text" name="skey" #skey="ngModel" [(ngModel)]="articuloService.selectActiculo.skey">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <mat-form-field class="example-full-width" style="width: 300px;">
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Ej. Pizza"  name="nombre"
+            #nombre="ngModel"
+            [(ngModel)]="articuloService.selectActiculo.nombre" >
+          </mat-form-field>
+        </tr>
+        <tr>
+          <mat-form-field class="example-full-width" style="width: 300px;">
+            <mat-label>Descripcion</mat-label>
+            <textarea matInput placeholder="Ej. fruta importada de ..." name="descripcion"
+            #descripcion="ngModel" [(ngModel)]="articuloService.selectActiculo.descripcion" ></textarea>
+          </mat-form-field>
+        </tr>
+        <tr>
+          <mat-form-field class="example-full-width" style="width: 300px;">
+            <mat-label>URL Imagen (disabled)</mat-label>
+            <input matInput disabled value="http://www..." name="imagen"
+            #imagen="ngModel" [(ngModel)]="articuloService.selectActiculo.imagen">
+          </mat-form-field>
+        </tr>
+
+        </table>
+      <table class="example-full-width" cellspacing="0"><tr>
+
+        <mat-form-field class="example-full-width" >
+          <mat-label>Precio</mat-label>
+          <input matInput type="number"name="precio" #precio="ngModel"
+          [(ngModel)]="articuloService.selectActiculo.precio">
+          <mat-hint align="end">Solo numero, sin $ ni puntos</mat-hint>
+        </mat-form-field></tr>
+        <tr><mat-form-field class="example-full-width">
+          <mat-label>Stock Disponible</mat-label>
+          <input  type="number"  matInput  name="disponible"
+          #disponible="ngModel"  [(ngModel)]="articuloService.selectActiculo.disponible" >
+
+        </mat-form-field></tr>
+      </table>
+      <div class="form-group">
+        <h5>Seleccionar Imagen</h5>
+        <input type="file" class="bnt btn-secondary" placeholder="buscar imagen" accept=".png, .jpg" (change)="onUpload($event)">
+      </div>
+      <div class="progress">
+        <div class="progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadPercent | async ) + '%'"></div>
+      </div>
+      <input type="hidden" #imagenArticulo [value]="urlImage | async">
+      <div class="form-group mt-2" >
+        <button class="btn btn-primary" type="submit" (click)="onSubmit(articuloForm)">
+          <i class="fa fa-save"> </i> guardar
+        </button> <span>  </span>
+        <button class="btn btn-dark" type="reset" (click)="resetForm(articuloForm)">
+          <i class="fa fa-eraser"></i>Borrar
+        </button>
+      </div>
+    </form>
+    </div>
+  </mat-grid-tile>
+
+</mat-grid-list>
+

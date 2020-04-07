@@ -1,0 +1,45 @@
+<mat-card class="example-card" style="width: 500px;">
+  <mat-card-header>
+    <img mat-card-avatar class="example-header-image"  [src]="articuloService.selectActiculo.imagen">
+    <mat-card-title> <h3>{{articuloService.selectActiculo.nombre}}</h3></mat-card-title>
+  </mat-card-header>
+  <br>
+
+  <img mat-card-image [src]="articuloService.selectActiculo.imagen" style="height: 200px;" >
+
+  <mat-card-content>
+    <p>
+    {{articuloService.selectActiculo.descripcion}}
+    </p>
+  </mat-card-content>
+
+  <mat-card-subtitle>
+    <mat-grid-list cols="2" rowHeight="25px">
+      <mat-grid-tile>Precio: </mat-grid-tile>
+      <mat-grid-tile>Stock Disponible:  </mat-grid-tile>
+      <mat-grid-tile><h5>${{articuloService.selectActiculo.precio| currency}}</h5></mat-grid-tile>
+      <mat-grid-tile><h5>{{articuloService.selectActiculo.disponible}}</h5></mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-subtitle>
+  <mat-card-actions>
+      <mat-grid-list cols="3" rowHeight="30px">
+        <mat-grid-tile>Comprar</mat-grid-tile>
+        <mat-grid-tile>Subtotal</mat-grid-tile>
+        <mat-grid-tile> </mat-grid-tile>
+        <mat-grid-tile><div class="row">
+          <button mat-mini-fab color="red" (click)="decr()" >-</button>
+          <h5><input matInput  min="1" name="pedido"  value="1" type="number" width="100px" style="width:60px; text-align: right;"
+          [(ngModel)]='pedido' (ngModelChange)="onChange()"
+          ></h5>
+          <button mat-mini-fab color="black" (click)="incr()"  >+</button>
+        </div></mat-grid-tile>
+        <mat-grid-tile>
+        <h5>{{pedido * articuloService.selectActiculo.precio | currency }}</h5>
+      </mat-grid-tile>
+      <mat-grid-tile> <button  mat-raised-button color="primary" (click)="comprar()"><mat-icon>add_shopping_cart</mat-icon> Comprar</button></mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-actions>
+
+</mat-card>
+
+

@@ -24,7 +24,7 @@ export class NavBarComponent implements OnInit {
       if(auth){
         this.isLogin = true;
         this.nombreUsuario = auth.displayName;
-        if(auth.displayName="Gerson Rodrigo Porras"){
+        if(auth.displayName=="Gerson Rodrigo Porras"){
           this.isAdmin=true;
         }
         this.emailUsuario = auth.email;
